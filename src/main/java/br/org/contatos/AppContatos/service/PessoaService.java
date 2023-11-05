@@ -1,14 +1,13 @@
 package br.org.contatos.AppContatos.service;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import br.org.contatos.AppContatos.entity.Pessoa;
 import br.org.contatos.AppContatos.repository.PessoaRepository;
 
 @Service
-public class PessoaService {
+public class PessoaService{
 	private PessoaRepository pessoaRepository;
 	
 	public PessoaService(PessoaRepository pessoaRepository) {
@@ -16,16 +15,16 @@ public class PessoaService {
 	
 	}
 
-	public List<Pessoa> create(Pessoa pessoa){
-		pessoaRepository.save(pessoa);
+	public List<Pessoa> create(Pessoa pessoas){
+		pessoaRepository.save(pessoas);
 		return list();
 	}
 	public List<Pessoa> list (){
 		return pessoaRepository.findAll();
 		
 	}
-	public List<Pessoa> update(Pessoa pessoa){
-		pessoaRepository.save(pessoa);
+	public List<Pessoa> update(Pessoa pessoas){
+		pessoaRepository.save(pessoas);
 		return list();
 		
 	}
@@ -34,4 +33,10 @@ public class PessoaService {
 		return list();
 	}
 	
+	public Pessoa buscaPorId(Long id) {
+	    return pessoaRepository.findById(id).orElse(null);
+	}
+	public Pessoa getPessoaParaMalaDireta(Long id) {
+		return pessoaRepository.findById(id).orElse(null);
+	}
 }

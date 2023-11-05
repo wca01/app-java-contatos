@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.org.contatos.AppContatos.entity.Pessoa;
 import br.org.contatos.AppContatos.service.PessoaService;
+import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/pessoa")
+@RequestMapping("/pessoas")
+
 public class PessoaController {
 	private PessoaService pessoaService;
 	
@@ -24,7 +26,7 @@ public class PessoaController {
 	}
 	
 	@PostMapping
-	List<Pessoa> create(@RequestBody Pessoa pessoa){
+	List<Pessoa> create(@RequestBody @Valid Pessoa pessoa){
 		return pessoaService.create(pessoa);
 	}
 	
@@ -42,5 +44,13 @@ public class PessoaController {
 	List<Pessoa> delete(@PathVariable("id") Long id){
 		return pessoaService.delete(id);
 	}
+	
+	@GetMapping("/pessoas/{id}")
+	public Pessoa buscaPorId(@PathVariable Long id) {
+	    return pessoaService.buscaPorId(id);
+	}
 }
+
+	        
+	        
 

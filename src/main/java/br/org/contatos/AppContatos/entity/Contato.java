@@ -10,11 +10,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="contato")
+@Table(name="contatos")
 public class Contato {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	@Column(nullable = false, unique = true)
 	private Long id;
 	
@@ -25,7 +24,13 @@ public class Contato {
 	@Column(nullable = false)
 	private Integer tipo;
 	private String contato;
-		
+	
+	
+	//editado
+	public enum TipoContato{
+		TELEFONE,
+		CELULAR
+	}
 	//construtores
 	public Long getId() {
 		return id;

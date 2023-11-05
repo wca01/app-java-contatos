@@ -16,16 +16,16 @@ private ContatoRepository contatoRepository;
 	
 	}
 
-	public List<Contato> create(Contato contato){
-		contatoRepository.save(contato);
+	public List<Contato> create(Contato contatos){
+		contatoRepository.save(contatos);
 		return list();
 	}
 	public List<Contato> list (){
 		return contatoRepository.findAll();
 		
 	}
-	public List<Contato> update(Contato contato){
-		contatoRepository.save(contato);
+	public List<Contato> update(Contato contatos){
+		contatoRepository.save(contatos);
 		return list();
 		
 	}

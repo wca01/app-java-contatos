@@ -15,7 +15,7 @@ import br.org.contatos.AppContatos.entity.Contato;
 import br.org.contatos.AppContatos.service.ContatoService;
 
 @RestController
-@RequestMapping("/contato")
+@RequestMapping("/contatos")
 public class ContatoController {
 	private ContatoService contatoService;
 

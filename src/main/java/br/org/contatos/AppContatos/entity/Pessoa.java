@@ -1,18 +1,22 @@
 package br.org.contatos.AppContatos.entity;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="pessoa")
+@Table(name="pessoas")
 public class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
 	@Column(nullable = false, unique = true)
 	private Long id;
 	
@@ -23,8 +27,12 @@ public class Pessoa {
 	private String cep;
 	private String cidade;
 	private String uf;
-
 	
+	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<Contato> contatos;
+	
+
+
 	//construtores
 	public Long getId() {
 		return id;
@@ -65,3 +73,4 @@ public class Pessoa {
 
 	
 }
+
